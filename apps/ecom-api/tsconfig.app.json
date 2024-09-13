@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@ecom-entities/*": ["../../libs/ecom-entities/src/entities/*"],
+      "@ecom-libs/*": ["../../libs/ecom-entities/src/*"]
+    },
+    "emitDecoratorMetadata": true,
+    "target": "es2021",
+    "experimentalDecorators": true
+  },
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
+  "include": ["src/**/*.ts"]
+}

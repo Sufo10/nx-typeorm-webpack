@@ -1,0 +1,35 @@
+{
+  "name": "ecom-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ecom-api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build", "build-migrations"],
+      "options": {
+        "buildTarget": "ecom-api:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ecom-api:build:development"
+        },
+        "production": {
+          "buildTarget": "ecom-api:build:production"
+        }
+      }
+    },
+    "build-migrations": {
+      "executor": "@nx/webpack:webpack",
+      "options": {
+        "outputPath": "dist/apps/ecom-api/migrations",
+        "webpackConfig": "apps/ecom-api/webpack.migrations.config.js",
+        "tsConfig": "libs/ecom-entities/tsconfig.json",
+        "assets": []
+      }
+    }
+  }
+}

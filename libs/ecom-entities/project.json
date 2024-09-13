@@ -1,0 +1,27 @@
+{
+  "name": "ecom-entities",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ecom-entities/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "migration-generate": {
+      "command": "ts-node -r tsconfig-paths/register --project libs/ecom-entities/tsconfig.json ./node_modules/typeorm/cli.js migration:generate -d libs/ecom-entities/src/typeorm.ts -p libs/ecom-entities/src/migrations/migration/$@",
+      "options": {
+        "envFile": "{workspaceRoot}/.env"
+      }
+    },
+    "migration-run": {
+      "command": "ts-node -r tsconfig-paths/register --project libs/ecom-entities/tsconfig.json  ./node_modules/typeorm/cli.js migration:run -d libs/ecom-entities/src/typeorm.ts",
+      "options": {
+        "envFile": "{workspaceRoot}/.env"
+      }
+    },
+    "migration-revert": {
+      "command": "ts-node -r tsconfig-paths/register --project libs/ecom-entities/tsconfig.json  ./node_modules/typeorm/cli.js migration:revert -d libs/ecom-entities/src/typeorm.ts",
+      "options": {
+        "envFile": "{workspaceRoot}/.env"
+      }
+    }
+  }
+}
